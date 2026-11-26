@@ -1,0 +1,10 @@
+{
+  "example": true,
+  "mint": "So11111111111111111111111111111111111111112",
+  "transactions": [],
+  "wallets": [
+    {"address":"11111111111111111111111111111111","heldBefore":false,"day7Balance":"4.25"},
+    {"address":"SysvarRent111111111111111111111111111111111","heldBefore":false,"day7Balance":"0"},
+    {"address":"SysvarC1ock11111111111111111111111111111111","heldBefore":true,"day7Balance":"2"}
+  ]
+}

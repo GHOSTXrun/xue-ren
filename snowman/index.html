@@ -1,0 +1,228 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6ebcc">
+<title>Solana retention reports</title><link rel="icon" href="../assets/snowman-mark.png">
+<style>
+:root { color-scheme: light; font-family: "Trebuchet MS", "Microsoft YaHei", system-ui, sans-serif; color: #133127; background: #f7ebcc; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: #284634; }
+button, input { font: inherit; }
+button, .button { cursor: pointer; }
+:focus-visible { outline: 3px solid #294635; outline-offset: 4px; }
+.shell { width: min(1120px, calc(100% - 40px)); margin: auto; }
+nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 28px 0; border-bottom: 1px solid #d5d6ad; }
+.brand { color: inherit; text-decoration: none; font-weight: 800; letter-spacing: .03em; }
+.brand img { width: 32px; height: 32px; vertical-align: middle; margin-right: 6px; }
+nav a:last-child { font-size: .88rem; }
+main { padding: clamp(36px, 7vw, 96px) 0; }
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 7vw, 90px); align-items: center; }
+.kicker { color: #2f4c38; font-size: .82rem; font-weight: 750; letter-spacing: .1em; }
+h1 { font-size: clamp(2.6rem, 6.5vw, 5.5rem); line-height: 1.1; margin: .25em 0; letter-spacing: -.06em; }
+h2 { margin: 0 0 12px; font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
+p { line-height: 1.65; }
+.intro { color: #324f3a; max-width: 30em; }
+.button { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 10px; text-decoration: none; padding: 12px 18px; background: #1c3b2e; color: white; font-weight: 700; }
+.button:hover { background: #2d4a37; }
+.quiet { background: #e9e2bf; color: #1c3b2e; }
+.quiet:hover { background: #d7d7af; }
+form { margin-top: 28px; }
+label { display: block; font-size: .85rem; font-weight: 700; margin-bottom: 8px; }
+.field { display: flex; gap: 8px; }
+input { min-width: 0; flex: 1; padding: 12px; border: 1px solid #899d66; border-radius: 10px; background: white; color: inherit; }
+.error { color: #a12839; margin: 6px 0 0; }
+.card { overflow: hidden; border-radius: 24px; border: 1px solid #c7cba0; background: #fbfdff; box-shadow: 0 20px 50px #23403115; }
+.card-head { display: flex; justify-content: space-between; gap: 12px; padding: 20px 22px 0; align-items: center; }
+.badge { border-radius: 99px; background: #e9e2bf; color: #294635; padding: 5px 10px; font-size: .78rem; font-weight: 700; white-space: nowrap; }
+.scene { display: grid; place-items: center; min-height: 245px; position: relative; overflow: hidden; isolation: isolate; background: radial-gradient(ellipse at 50% 56%, #fff 4%, #ece5c3 62%, #f7fbff 93%); }
+.scene::before { content: ""; position: absolute; inset: 68% -20% -45% 4%; border-radius: 50%; background: #f8fcff; transform: rotate(-7deg); z-index: -1; }
+.flake { position: absolute; color: #4f6e48; font-size: 1.4rem; }
+.flake:nth-child(1) { left: 15%; top: 30%; } .flake:nth-child(2) { right: 15%; top: 23%; } .flake:nth-child(3) { right: 23%; top: 68%; }
+.snowman { --size: 1; position: relative; width: 178px; height: 213px; transform: scale(var(--size)); transform-origin: 50% 89%; transition: transform .4s ease; }
+.ball { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle at 32% 25%, white 12%, #fcf4df 45%, #aab584 100%); border: 1px solid #bac193; }
+.base { bottom: 9px; width: 145px; height: 105px; box-shadow: 0 13px 20px #49674530; }
+.middle { bottom: 79px; width: 109px; height: 87px; }
+.head { bottom: 143px; width: 81px; height: 69px; }
+.eye, .coal { position: absolute; border-radius: 50%; background: #1f3d2f; height: 7px; width: 7px; }
+.eye { top: 25px; left: 25px; box-shadow: 23px 0 #1f3d2f; }
+.nose { position: absolute; left: 39px; top: 34px; width: 24px; height: 10px; background: #ec843a; clip-path: polygon(0 0,100% 65%,0 100%); }
+.scarf { position: absolute; width: 79px; height: 13px; bottom: 141px; left: 50px; border-radius: 8px; background: #35523c; transform: rotate(-5deg); }
+.scarf::after { content: ""; position: absolute; width: 14px; height: 44px; right: 7px; top: 3px; border-radius: 5px; background: #35523c; transform: rotate(-18deg); }
+.coal { bottom: 107px; left: 86px; box-shadow: 0 17px #1f3d2f; }
+.readout { padding: 16px 22px 22px; }
+.count { font-size: 2.55rem; font-weight: 800; line-height: 1.2; letter-spacing: -.04em; }
+.count small { font-size: 1rem; color: #38543d; letter-spacing: normal; }
+.days { display: flex; gap: 6px; margin-top: 15px; }
+.days button { flex: 1; border: 1px solid #cbcea3; background: white; padding: 9px 4px; border-radius: 8px; color: #1c3b2e; }
+.days button[aria-pressed="true"] { background: #1c3b2e; color: white; border-color: #1c3b2e; }
+.report-head { margin-bottom: 28px; }
+.report-head h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); }
+.report-grid { align-items: start; }
+.panel { padding: 24px; background: #fbfdff; border: 1px solid #c7cba0; border-radius: 20px; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 22px; }
+.stat { background: #f5eaca; padding: 14px; border-radius: 12px; }
+.stat strong { display: block; font-size: 1.65rem; }
+details { border-top: 1px solid #d5d6ad; margin-top: 18px; padding-top: 14px; }
+summary { cursor: pointer; font-weight: 700; }
+table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+th, td { text-align: left; padding: 9px 4px; border-bottom: 1px solid #e3deb9; font-size: .85rem; }
+.muted { color: #38543d; font-size: .9rem; }
+.address { overflow-wrap: anywhere; }
+.copy-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+[hidden] { display: none !important; }
+footer { padding: 18px 0 28px; border-top: 1px solid #d5d6ad; font-size: .84rem; color: #38543d; }
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; } .shell { width: calc(100% - 28px); } .scene { min-height: 224px; } }
+@media (max-width: 380px) { .field { flex-direction: column; } }
+@media (prefers-reduced-motion: reduce) { .snowman { transition: none; } }
+h1, h2 { font-family: Georgia, "Noto Serif CJK SC", "SimSun", serif; }
+.brand img { border-radius: 12%; }
+.scarf, .scarf::after { background: #b5531c; }
+</style>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/site.js"></script></head>
+<body class="portal-shell portal-standalone"><a class="portal-skip" href="#main">Skip to content</a><header class="portal-header"><div class="portal-wrap portal-header-inner"><a class="portal-mark" href="../index.html" aria-label="Home"><img src="../assets/snowman-mark.png" width="48" height="48" alt=""></a><nav class="portal-nav" aria-label="Primary navigation"><a href="../explore/index.html">Explore</a><a href="../network/index.html">Holder Network</a><a href="../leaderboard/index.html">Leaderboard</a><a href="../how-it-works/index.html">How it works</a></nav><a class="portal-button portal-button-dark portal-report-cta" href="index.html">Retention reports <span aria-hidden="true">&#8599;</span></a><button class="portal-menu" type="button" aria-label="Menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header><main id="main" class="shell">
+  <div id="report-head" class="report-head" hidden>
+    <a href="./index.html">← 返回首页</a>
+    <h1 id="report-title">分发报告</h1>
+    <p id="report-subtitle" class="intro"></p>
+  </div>
+  <div class="hero" id="layout">
+    <section id="home">
+      <div class="kicker">SOLANA 空投留存报告</div>
+      <h1>空投过后，<br>谁还在？</h1>
+      <p class="intro">每轮空投堆起一个雪人。7 天后，看看多少收件钱包仍持有这枚代币。</p>
+      <a class="button" href="?report=demo">查看示例报告</a>
+      <form id="lookup" novalidate>
+        <label for="mint">Solana 代币地址</label>
+        <div class="field">
+          <input id="mint" name="mint" placeholder="粘贴代币 Mint 地址" autocomplete="off" spellcheck="false" required aria-describedby="lookup-error">
+          <button class="button quiet" type="submit">查询报告</button>
+        </div>
+        <p class="error" id="lookup-error" role="alert" hidden></p>
+      </form>
+    </section>
+    <section class="card" id="visual" aria-label="示例雪人留存图">
+      <div class="card-head"><strong>雪球留存</strong><span class="badge">示例数据</span></div>
+      <div class="scene" aria-hidden="true">
+        <span class="flake">✧</span><span class="flake">❄</span><span class="flake">✧</span>
+        <div class="snowman" id="snowman"><div class="ball base"></div><div class="ball middle"></div><div class="ball head"><span class="eye"></span><span class="nose"></span></div><span class="scarf"></span><span class="coal"></span></div>
+      </div>
+      <div class="readout">
+        <div aria-live="polite"><div class="count"><span id="count">37</span> <small>/ 100 钱包</small></div><div class="muted" id="day-label">第 7 天仍持有</div></div>
+        <div class="days" role="group" aria-label="查看留存时间点">
+          <button type="button" data-day="0" aria-pressed="false">发放当天</button>
+          <button type="button" data-day="3" aria-pressed="false">第 3 天</button>
+          <button type="button" data-day="7" aria-pressed="true">第 7 天</button>
+        </div>
+      </div>
+    </section>
+    <section class="panel" id="demo-details" hidden>
+      <h2>分发结果</h2>
+      <div class="stats"><div class="stat"><strong>100</strong>收件钱包</div><div class="stat"><strong>37%</strong>第 7 天留存</div></div>
+      <p class="muted">示例中的 100 个钱包均在分发前未持有该代币。第 7 天余额大于零的钱包计为留存。数字和钱包明细均为演示数据。</p>
+      <details>
+        <summary>查看钱包明细示例</summary>
+        <table><thead><tr><th scope="col">示例钱包</th><th scope="col">第 7 天状态</th></tr></thead>
+        <tbody><tr><td>钱包 001</td><td>仍持有</td></tr><tr><td>钱包 038</td><td>余额为零</td></tr></tbody></table>
+      </details>
+    </section>
+    <section class="panel" id="unavailable" hidden>
+      <h2 id="unavailable-title">暂无可核验数据</h2>
+      <p id="unavailable-text">这枚代币尚未收录分发记录或第 7 天余额快照。</p>
+      <p id="token-address" class="address muted"></p>
+      <a id="chain-link" target="_blank" rel="noopener noreferrer">在 Solscan 查看代币 ↗</a>
+    </section>
+  </div>
+  <section class="panel" id="import-panel" style="margin-top:24px">
+    <h2>&#23548;&#20837; 7 &#22825;&#24555;&#29031;</h2>
+    <p class="muted">&#19978;&#20256; JSON &#25991;&#20214;&#65292;&#29992;&#29616;&#26377;&#30340;&#20998;&#21457;&#21644;&#20313;&#39069;&#25968;&#25454;&#35745;&#31639;&#30041;&#23384;&#12290;&#25991;&#20214;&#21482;&#22312;&#24403;&#21069;&#27983;&#35272;&#22120;&#35835;&#21462;&#12290;</p>
+    <label for="snapshot">JSON snapshot</label><input id="snapshot" type="file" accept=".json,application/json"> <a href="snapshot-example.json" download>Download example JSON</a>
+    <p id="import-status" role="status" class="muted"></p><div id="import-result" hidden></div>
+  </section>
+  <div id="share" class="copy-row" hidden><button class="button" id="copy" type="button">复制报告链接</button><span class="muted" id="copy-status" role="status"></span></div>
+</main>
+
+<script>
+const byId = id => document.getElementById(id);
+const mintPattern = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/;
+function isMintAddress(address) {
+  if (!mintPattern.test(address)) return false;
+  const alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+  let value = 0n;
+  for (const character of address) value = value * 58n + BigInt(alphabet.indexOf(character));
+  const bytes = value === 0n ? 0 : Math.ceil(value.toString(16).length / 2);
+  const leadingZeros = address.match(/^1*/)[0].length;
+  return bytes + leadingZeros === 32;
+}
+
+const days = {
+  0: { count: 100, label: '发放当天收到空投' },
+  3: { count: 58, label: '第 3 天仍持有' },
+  7: { count: 37, label: '第 7 天仍持有' }
+};
+const dayButtons = Array.from(document.querySelectorAll('[data-day]'));
+function showDay(day) {
+  const { count, label } = days[day];
+  byId('count').textContent = count;
+  byId('day-label').textContent = label;
+  byId('snowman').style.setProperty('--size', Math.sqrt(count / 100));
+  for (const button of dayButtons) button.setAttribute('aria-pressed', String(button.dataset.day === day));
+}
+for (const button of dayButtons) button.addEventListener('click', () => showDay(button.dataset.day));
+showDay('7');
+
+const query = new URLSearchParams(location.search);
+if (query.get('report') === 'demo' || query.has('mint')) {
+  const demo = query.get('report') === 'demo';
+  const mint = query.get('mint')?.trim() ?? '';
+  const valid = isMintAddress(mint);
+  byId('home').hidden = true;
+  byId('report-head').hidden = false;
+  byId('layout').classList.add('report-grid');
+  byId('report-title').textContent = demo ? '7 天留存报告' : '代币分发报告';
+  byId('report-subtitle').textContent = demo ? '用一轮模拟空投看看雪人如何变化。' : '按代币地址查看可核验的分发记录。';
+  byId('visual').hidden = !demo;
+  byId('demo-details').hidden = !demo;
+  byId('unavailable').hidden = demo;
+  byId('share').hidden = !demo && !valid;
+  if (!demo) {
+    if (valid) {
+      byId('token-address').textContent = mint;
+      byId('chain-link').href = 'https://solscan.io/token/' + encodeURIComponent(mint);
+    } else {
+      byId('unavailable-title').textContent = '地址格式不正确';
+      byId('unavailable-text').textContent = '请返回首页并输入有效的 Solana 代币 Mint 地址。';
+      byId('chain-link').hidden = true;
+    }
+  }
+}
+
+byId('lookup').addEventListener('submit', event => {
+  event.preventDefault();
+  const mint = byId('mint').value.trim();
+  if (isMintAddress(mint)) {
+    location.search = new URLSearchParams({ mint }).toString();
+    return;
+  }
+  byId('mint').setAttribute('aria-invalid', 'true');
+  byId('lookup-error').textContent = '请输入有效的 Solana 代币 Mint 地址。';
+  byId('lookup-error').hidden = false;
+  byId('mint').focus();
+});
+byId('mint').addEventListener('input', () => {
+  byId('mint').removeAttribute('aria-invalid');
+  byId('lookup-error').hidden = true;
+});
+byId('copy').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(location.href);
+    byId('copy-status').textContent = '已复制链接';
+  } catch {
+    byId('copy-status').textContent = '可从浏览器地址栏复制链接。';
+  }
+});
+</script>
+<script src="import-report.js"></script><footer class="portal-footer"><div class="portal-wrap portal-footer-inner"><a class="portal-mark" href="../index.html" aria-label="Home"><img src="../assets/snowman-mark.png" width="38" height="38" loading="lazy" alt=""></a><nav aria-label="Footer navigation"><a href="../launch/index.html">Launch draft</a><a href="../register/index.html">Register coin</a><a href="../opt-out/index.html">Opt out</a><a href="../status/index.html">Site status</a></nav><a href="https://x.com/holdersnowball">X <span aria-hidden="true">&#8599;</span></a></div></footer></body>
+</html>
