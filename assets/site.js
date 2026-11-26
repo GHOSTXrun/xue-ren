@@ -316,3 +316,21 @@ if (route === "history") {
     walletInput.addEventListener('keydown', event => { if (event.key === 'Enter') lookupWallet(event); });
   }
 }
+
+const headerMark = document.querySelector('.portal-header .portal-mark');
+const headerReport = document.querySelector('.portal-header .portal-report-cta');
+if (headerMark && !headerMark.querySelector('.portal-wordmark')) {
+  const wordmark = node('span', 'SNOLLO', 'portal-wordmark');
+  wordmark.translate = false;
+  headerMark.append(wordmark);
+  headerMark.setAttribute('aria-label', 'SNOLLO home');
+}
+if (headerReport && !headerReport.closest('.portal-header-actions')) {
+  const actions = node('div', '', 'portal-header-actions');
+  const contract = node('span', '', 'portal-contract-status');
+  contract.translate = false;
+  contract.append('CA: ', node('strong', 'TBA'));
+  headerReport.before(actions);
+  actions.append(contract, headerReport);
+}
+if (headerMark && !document.title.startsWith('SNOLLO')) document.title = 'SNOLLO | ' + document.title;

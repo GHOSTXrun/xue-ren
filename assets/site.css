@@ -234,3 +234,10 @@ img[src$="snowman-mark.png"]{border-radius:12%;object-fit:contain}
 @media(max-width:640px){
   .portal-standalone > main,.portal-interior > main,.portal-standalone > main.shell{width:calc(100% - 30px);margin-top:14px;padding:14px}
 }
+
+.portal-header .portal-mark{gap:10px;color:var(--portal-ink);text-decoration:none}
+.portal-wordmark{font:800 clamp(1.12rem,2.1vw,1.74rem)/1 Georgia,serif;letter-spacing:.045em}
+.portal-header-actions{display:flex;align-items:center;justify-self:end;gap:9px;white-space:nowrap}
+.portal-contract-status{display:inline-flex;align-items:center;gap:5px;border:1px solid #c6cdb6;border-radius:99px;padding:9px 12px;background:#ededd8;color:#224536;font:600 .8rem/1.1 system-ui,sans-serif}
+@media(max-width:640px){.portal-header .portal-mark{gap:6px}.portal-contract-status{padding:7px 8px;font-size:.71rem}.portal-header-actions{gap:5px}}
+@media(max-width:540px){.portal-header-actions .portal-report-cta{display:none}.portal-header .portal-mark img{width:36px;height:36px}}
