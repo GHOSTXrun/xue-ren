@@ -334,3 +334,18 @@ if (headerReport && !headerReport.closest('.portal-header-actions')) {
   actions.append(contract, headerReport);
 }
 if (headerMark && !document.title.startsWith('SNOLLO')) document.title = 'SNOLLO | ' + document.title;
+
+const officialX = 'https://x.com/SNOLLOfun';
+const socialActions = document.querySelector('.portal-header .portal-header-actions');
+if (socialActions && !socialActions.querySelector('.portal-x-button')) {
+  const xButton = node('a', '', 'portal-x-button');
+  xButton.href = officialX;
+  xButton.target = '_blank';
+  xButton.rel = 'noopener noreferrer';
+  xButton.setAttribute('aria-label', 'SNOLLO on X');
+  xButton.innerHTML = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h4l12 18h-4L4 3Zm16 0L4 21"/></svg>';
+  socialActions.append(xButton);
+}
+for (const oldAccount of document.querySelectorAll('.portal-footer a[href="https://x.com/holdersnowball"]')) {
+  oldAccount.href = officialX;
+}
