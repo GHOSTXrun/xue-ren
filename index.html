@@ -179,6 +179,7 @@
 .hero-product-proof span{color:#a7501d}
 @media(max-width:820px){.portal-hero-split h1#portal-title{font-size:clamp(2.45rem,8.8vw,4.35rem)}}
 @media(max-width:560px){.portal-hero-split .hero-product-label{margin-bottom:13px}.portal-hero-split .portal-hero-copy>p.hero-product-description{margin-top:17px}.hero-product-proof{gap:6px 11px}}
+.growth-wallet-badge{position:absolute;top:12px;right:12px;z-index:4;padding:7px 11px;border:1px solid #e0d4aa;border-radius:999px;background:#fbf0d1;color:#224536;white-space:nowrap;font:700 .76rem/1.2 system-ui,sans-serif;font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body class="portal-shell portal-home"><a class="portal-skip" href="#main">Skip to content</a><header class="portal-header"><div class="portal-wrap portal-header-inner"><a class="portal-mark" href="index.html" aria-label="Home"><img src="assets/snowman-mark.png" width="48" height="48" alt=""></a><nav class="portal-nav" aria-label="Primary navigation"><a href="how-it-works/index.html">How it works</a><a href="history/index.html">Historical data</a></nav><a class="portal-button portal-button-dark portal-report-cta" href="snowman/index.html">Retention reports <span aria-hidden="true">&#8599;</span></a><button class="portal-menu" type="button" aria-label="Menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
@@ -254,10 +255,7 @@
         <span class="growth-particle" style="--from-x:-122px;--from-y:-56px"></span><span class="growth-particle" style="--from-x:108px;--from-y:-42px"></span><span class="growth-particle" style="--from-x:-98px;--from-y:70px"></span><span class="growth-particle" style="--from-x:120px;--from-y:52px"></span><span class="growth-particle" style="--from-x:0px;--from-y:-98px"></span>
         <div class="growth-ball"></div>
         </div>
-      </div>
-      <div class="growth-controls">
-        <div><strong id="growth-count" role="status">0 / 5 sample wallets added</strong><p>Illustration only. No live wallet data.</p></div>
-        <div class="growth-buttons"><button type="button" class="portal-button portal-button-dark" id="growth-add">Add a sample wallet</button></div>
+        <strong class="growth-wallet-badge" id="growth-count" aria-live="off">0 / 5 sample wallets</strong>
       </div>
     </div>
   </section>
@@ -322,18 +320,12 @@
   const particles = Array.from(document.querySelectorAll('.growth-particle'));
   const counter = document.getElementById('growth-count');
   const ball = document.querySelector('.growth-ball');
-  const add = document.getElementById('growth-add');
   let count = 0;
   function renderGrowth() {
     particles.forEach((particle, index) => particle.classList.toggle('is-added', index < count));
     ball.style.setProperty('--growth-scale', String(1 + .16 * count));
-    counter.textContent = count + ' / ' + particles.length + ' sample wallets added';
-    add.disabled = count === particles.length;
+    counter.textContent = count + ' / ' + particles.length + ' sample wallets';
   }
-  add.addEventListener('click', () => {
-    if (count < particles.length) count++;
-    renderGrowth();
-  });
 
   const cycle = document.querySelector('.cycle-diagram');
   const growth = document.querySelector('.growth-demo');
@@ -342,8 +334,6 @@
   const still = art.getAttribute('src');
   const reducesMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let timer;
-  let manualGrowth = false;
-  let sampleProgress = 0;
 
   function setCycle(active) {
     cycle.dataset.motion = active ? 'running' : 'stopped';
@@ -351,23 +341,11 @@
   }
   function setGrowth(active) {
     growth.dataset.motion = active ? 'running' : 'stopped';
-    counter.setAttribute('aria-live', active ? 'off' : 'polite');
     art.src = active ? art.dataset.animatedSrc : still;
     clearInterval(timer);
     if (!active) return;
-    if (manualGrowth) {
-      manualGrowth = false;
-      sampleProgress = 0;
-    }
     const advance = () => {
-      if (manualGrowth) return;
-      if (sampleProgress === particles.length) {
-        sampleProgress = 0;
-        count = 0;
-      } else {
-        sampleProgress++;
-        count = sampleProgress;
-      }
+      count = (count + 1) % (particles.length + 1);
       renderGrowth();
     };
     if (count === 0) advance();
@@ -376,12 +354,6 @@
   art.addEventListener('error', () => {
     if (growth.dataset.motion === 'running') setGrowth(false);
   });
-  function useManualGrowth() {
-    manualGrowth = count < particles.length;
-    sampleProgress = count;
-    counter.setAttribute('aria-live', 'polite');
-  }
-  add.addEventListener('click', useManualGrowth);
 
   function bindMotion(container, button, setMotion) {
     let preference = null;
