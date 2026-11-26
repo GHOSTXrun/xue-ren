@@ -53,6 +53,45 @@
  .hero-round-steps a{padding:10px 12px 12px}
  .hero-entry-actions .portal-button{padding:9px 12px;font-size:.8rem}
 }
+
+@media(min-width:961px){.portal-archive{grid-template-columns:minmax(122px,.62fr) 3.3fr auto}}
+.portal-archive dl{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:560px){.portal-archive dl{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 8px}.portal-archive dl div:nth-child(3){border-left:0;padding-left:0}}
+.cycle-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,55px);align-items:center}
+.cycle-copy>p{line-height:1.68;color:var(--portal-muted);margin:0 0 17px}
+.cycle-briefs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cycle-briefs>div{padding:13px 11px;border:1px solid var(--portal-line);border-radius:10px;background:#fcfbf1}
+.cycle-briefs strong,.cycle-briefs span{display:block}
+.cycle-briefs span{margin-top:5px;color:var(--portal-muted);font-size:.82rem;line-height:1.4}
+.cycle-copy .cycle-caveat{margin:12px 0 0;font-size:.85rem}
+.cycle-diagram{background:#eef0e1;border:1px solid var(--portal-line);border-radius:14px;padding:6px 10px 14px}
+.cycle-ring{position:relative;width:min(100%,414px);height:clamp(250px,27vw,346px);margin:auto}
+.cycle-orbit{position:absolute;inset:12% 18%;border:2px dashed #97ac87;border-radius:50%;background:radial-gradient(ellipse,#f7f2dd 28%,transparent 69%)}
+.cycle-core{position:absolute;top:52%;left:50%;transform:translate(-50%,-50%);display:grid;justify-items:center;gap:7px;width:110px;font-size:.79rem;text-align:center}
+.cycle-ball,.growth-ball{display:block;border-radius:50%;background:radial-gradient(circle at 30% 27%,#fffef0 5%,#fff1cd 53%,#baa975 100%);box-shadow:inset -8px -9px 17px #7f774240,0 9px 20px #2548342c}
+.cycle-ball{width:58px;aspect-ratio:1}
+.cycle-step{position:absolute;display:flex;align-items:center;gap:4px;white-space:nowrap;padding:7px 8px;border:1px solid #c1cbb2;border-radius:9px;background:#fcfbf1;color:#193b2e;cursor:pointer;font:700 clamp(.69rem,1.08vw,.9rem)/1.2 system-ui,sans-serif}
+.cycle-step span{font-size:.66rem;color:#596c51}
+.cycle-step:hover,.cycle-step[aria-pressed="true"]{background:#244936;color:#fff6dc;border-color:#244936}
+.cycle-step[aria-pressed="true"] span,.cycle-step:hover span{color:#e1e9d4}
+.cycle-step-1{top:5%;left:50%;transform:translateX(-50%)}
+.cycle-step-2{top:33%;right:1%}
+.cycle-step-3{bottom:12%;right:12%}
+.cycle-step-4{bottom:12%;left:9%}
+.cycle-step-5{top:33%;left:1%}
+.cycle-description{min-height:3em;margin:0 auto;width:min(94%,385px);font-size:.88rem;line-height:1.4;color:var(--portal-muted);text-align:center}
+.growth-demo{border:1px solid var(--portal-line);border-radius:14px;background:#fcfbf1;overflow:hidden}
+.growth-stage{position:relative;isolation:isolate;overflow:hidden;height:clamp(207px,29vw,350px);background:radial-gradient(ellipse at 50% 33%,#eef1df 6%,#cbd7ae 61%,#9db089 100%)}
+.growth-hills{position:absolute;inset:46% -5% -23%;z-index:-1;background:#869f76;clip-path:polygon(0 42%,14% 27%,32% 41%,45% 58%,63% 42%,80% 27%,100% 39%,100% 100%,0 100%)}
+.growth-ball{position:absolute;top:50%;left:50%;width:clamp(84px,13vw,146px);aspect-ratio:1;transform:translate(-50%,-50%) scale(var(--growth-scale,1));transition:transform .42s ease-out}
+.growth-particle{position:absolute;top:50%;left:50%;width:16px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff5dd,#a9996d);box-shadow:0 3px 6px #25483433;transform:translate(var(--from-x),var(--from-y));transition:transform .36s ease-out,opacity .36s}
+.growth-particle.is-added{transform:translate(-50%,-50%) scale(.35);opacity:0}
+.growth-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 17px}
+.growth-controls p{margin:4px 0 0;font-size:.82rem;color:var(--portal-muted)}
+.growth-buttons{display:flex;flex-wrap:wrap;gap:7px}
+@media(max-width:760px){.cycle-layout{grid-template-columns:minmax(0,1fr)}.growth-controls{align-items:start;flex-direction:column}}
+@media(max-width:420px){.cycle-briefs{grid-template-columns:1fr}.cycle-briefs span{display:inline;margin-left:5px}}
+@media(prefers-reduced-motion:reduce){.growth-ball,.growth-particle{transition:none}}
 </style>
 </head>
 <body class="portal-shell portal-home"><a class="portal-skip" href="#main">Skip to content</a><header class="portal-header"><div class="portal-wrap portal-header-inner"><a class="portal-mark" href="index.html" aria-label="Home"><img src="assets/snowman-mark.png" width="48" height="48" alt=""></a><nav class="portal-nav" aria-label="Primary navigation"><a href="explore/index.html">Explore</a><a href="network/index.html">Holder Network</a><a href="leaderboard/index.html">Leaderboard</a><a href="how-it-works/index.html">How it works</a></nav><a class="portal-button portal-button-dark portal-report-cta" href="snowman/index.html">Retention reports <span aria-hidden="true">&#8599;</span></a><button class="portal-menu" type="button" aria-label="Menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
@@ -96,10 +135,49 @@
       <div><dt>Wallets reached</dt><dd>46,046</dd></div>
       <div><dt>Coins registered</dt><dd>20</dd></div>
       <div><dt>Tokens distributed</dt><dd>2.92M</dd></div>
+      <div><dt>Distribution value</dt><dd>$47.40</dd></div>
     </dl>
     <a class="portal-text-link" href="network/index.html">Holder network <span aria-hidden="true">→</span></a>
   </section>
 
+
+  <section class="portal-section" aria-labelledby="cycle-title">
+    <div class="portal-section-head"><h2 id="cycle-title">The snowball effect</h2><a class="portal-text-link" href="how-it-works/index.html">Full mechanism <span aria-hidden="true">→</span></a></div>
+    <div class="cycle-layout">
+      <div class="cycle-copy">
+        <p>A round starts with trading activity. Creator fees buy the same token and distribute it to eligible wallets that don’t already hold it. If those new holders trade, their activity can help fund another round.</p>
+        <div class="cycle-briefs"><div><strong>A small start</strong><span>The first batch of fees funds the first round.</span></div><div><strong>New wallets</strong><span>Distributions aim to reach wallets that haven’t held the token.</span></div><div><strong>Another round</strong><span>More trading can provide more fees for future rounds.</span></div></div>
+        <p class="cycle-caveat">Recipients can sell, and future rounds depend on trading activity.</p>
+      </div>
+      <div class="cycle-diagram">
+        <div class="cycle-ring" role="group" aria-label="Select a step in the distribution cycle">
+          <div class="cycle-orbit" aria-hidden="true"></div>
+          <div class="cycle-core" aria-hidden="true"><span class="cycle-ball"></span><strong>The next round</strong></div>
+          <button class="cycle-step cycle-step-1" type="button" data-cycle-step="0" aria-pressed="true" aria-controls="cycle-description"><span>01</span> Trading</button>
+          <button class="cycle-step cycle-step-2" type="button" data-cycle-step="1" aria-pressed="false" aria-controls="cycle-description"><span>02</span> Creator fees</button>
+          <button class="cycle-step cycle-step-3" type="button" data-cycle-step="2" aria-pressed="false" aria-controls="cycle-description"><span>03</span> Buyback</button>
+          <button class="cycle-step cycle-step-4" type="button" data-cycle-step="3" aria-pressed="false" aria-controls="cycle-description"><span>04</span> Distribution</button>
+          <button class="cycle-step cycle-step-5" type="button" data-cycle-step="4" aria-pressed="false" aria-controls="cycle-description"><span>05</span> New holders</button>
+        </div>
+        <p class="cycle-description" id="cycle-description" aria-live="polite">People trade the token. That activity can generate creator fees.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="portal-section" aria-labelledby="growth-title">
+    <div class="portal-section-head"><h2 id="growth-title">Every new holder adds to the ball</h2></div>
+    <div class="growth-demo">
+      <div class="growth-stage" aria-hidden="true">
+        <div class="growth-hills"></div>
+        <span class="growth-particle" style="--from-x:-122px;--from-y:-56px"></span><span class="growth-particle" style="--from-x:108px;--from-y:-42px"></span><span class="growth-particle" style="--from-x:-98px;--from-y:70px"></span><span class="growth-particle" style="--from-x:120px;--from-y:52px"></span><span class="growth-particle" style="--from-x:0px;--from-y:-98px"></span>
+        <div class="growth-ball"></div>
+      </div>
+      <div class="growth-controls">
+        <div><strong id="growth-count" role="status">0 / 5 sample wallets added</strong><p>Illustration only. No live wallet data.</p></div>
+        <div class="growth-buttons"><button type="button" class="portal-button portal-button-dark" id="growth-add">Add a sample wallet</button><button type="button" class="portal-button hero-outlined" id="growth-reset" disabled>Reset</button></div>
+      </div>
+    </div>
+  </section>
   <section class="portal-section" aria-labelledby="round-title">
     <div class="portal-section-head">
       <h2 id="round-title">Inside a round</h2>
@@ -177,6 +255,43 @@
     if (!manualChoice) showMotion(!event.matches);
   });
   if (!preference.matches) showMotion(true);
+})();
+</script>
+<script>
+(() => {
+  const descriptions = ["People trade the token. That activity can generate creator fees.","A share of trading fees goes to the distribution wallet.","Fees in the wallet are used to buy the same token.","The purchased tokens go to eligible wallets that don’t already hold them.","New recipients can keep, sell or trade their tokens. Any new trading can feed into the next round."];
+  const cycleButtons = Array.from(document.querySelectorAll('[data-cycle-step]'));
+  const description = document.getElementById('cycle-description');
+  for (const button of cycleButtons) {
+    button.addEventListener('click', () => {
+      for (const item of cycleButtons) item.setAttribute('aria-pressed', String(item === button));
+      description.textContent = descriptions[Number(button.dataset.cycleStep)];
+    });
+  }
+
+  const particles = Array.from(document.querySelectorAll('.growth-particle'));
+  const counter = document.getElementById('growth-count');
+  const ball = document.querySelector('.growth-ball');
+  const add = document.getElementById('growth-add');
+  const reset = document.getElementById('growth-reset');
+  let count = 0;
+  function renderGrowth() {
+    particles.forEach((particle, index) => particle.classList.toggle('is-added', index < count));
+    ball.style.setProperty('--growth-scale', String(1 + .085 * count));
+    counter.textContent = count + ' / ' + particles.length + ' sample wallets added';
+    add.disabled = count === particles.length;
+    reset.disabled = count === 0;
+  }
+  add.addEventListener('click', () => {
+    if (count < particles.length) count++;
+    renderGrowth();
+    if (add.disabled) reset.focus();
+  });
+  reset.addEventListener('click', () => {
+    count = 0;
+    renderGrowth();
+    add.focus();
+  });
 })();
 </script>
 </body>
