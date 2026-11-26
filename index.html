@@ -131,6 +131,48 @@
 @keyframes scan-ink{0%{opacity:0}45%{opacity:.72}100%{opacity:1}}
 .home-snow-layer{position:fixed;inset:0;width:100%;height:100%;z-index:65;pointer-events:none}
 @media(prefers-reduced-motion:reduce){.scan-glyph{opacity:1!important;animation:none!important}.home-snow-layer{display:none}}
+
+/* Editorial flow path and a single illustrated snow field */
+.cycle-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:start;gap:clamp(20px,4vw,60px)}
+.cycle-diagram{position:relative;overflow:hidden;padding:clamp(16px,3vw,30px);border:1px solid #d3d8c2;border-radius:18px;background:linear-gradient(152deg,#fcfbef 5%,#eef0df 100%);color:#193b2e;box-shadow:none}
+.cycle-toolbar{justify-content:space-between;align-items:center;padding:0;margin-bottom:17px}
+.cycle-toolbar strong{font:700 1.08rem/1.2 Georgia,serif}
+.cycle-motion,.growth-motion{background:#fff5d6;border-color:#c8cba9;color:#234434}
+.cycle-ring{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:relative;isolation:isolate;gap:5px;width:auto;height:auto;margin:0;padding:0}
+.cycle-track{position:absolute;top:21px;left:10%;right:10%;height:2px;background:#a7b995;z-index:-1}
+.cycle-track::after{content:"";position:absolute;top:50%;left:0;width:10px;height:10px;border-radius:50%;background:#d8773e;box-shadow:0 0 0 4px #e7a87543,0 0 14px #bd662f8b;opacity:0;animation:cycle-travel 4.6s ease-in-out infinite paused}
+.cycle-diagram[data-motion="running"] .cycle-track::after{animation-play-state:running}
+@keyframes cycle-travel{0%{left:0;opacity:0;transform:translate(-50%,-50%)}13%{opacity:1}88%{opacity:1}100%{left:100%;opacity:0;transform:translate(-50%,-50%)}}
+.cycle-ring .cycle-step{position:relative;inset:auto;transform:none;display:flex;flex-direction:column;align-items:center;justify-content:start;gap:9px;padding:0 2px 9px;background:transparent;color:#263f30;border:0;border-radius:9px;box-shadow:none;white-space:normal;font-size:.78rem;text-align:center}
+.cycle-ring .cycle-step:hover,.cycle-ring .cycle-step[aria-pressed="true"]{color:#203d2d;background:#e3ecd775}
+.cycle-ring .cycle-step span{display:grid;place-items:center;width:43px;height:43px;border:1px solid #a5b598;border-radius:50%;background:#f8f4df;color:#42634a;font-size:.75rem;box-shadow:0 2px 6px #38553c1c}
+.cycle-ring .cycle-step[aria-pressed="true"] span{background:#224835;color:#fff1ca;border-color:#224835}
+.cycle-description{width:auto;min-height:3.8em;text-align:left;margin:10px 0 0;padding:12px 13px 0;border-top:1px solid #cfd7bc;color:#49614e}
+.growth-showcase{position:relative;isolation:isolate;display:block;height:clamp(270px,37vw,480px);overflow:hidden;background:radial-gradient(ellipse at 74% 29%,#537450 0%,#284c3b 47%,#18392e 87%)}
+.growth-showcase::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(174deg,transparent 0 70%,#f9e7be 70.3%,#f4dfb2 100%)}
+.growth-art{position:absolute;inset:0 25% 0 0;min-height:0;aspect-ratio:auto;overflow:visible;background:none}
+.growth-art>img{object-fit:cover;object-position:38% 55%;-webkit-mask-image:linear-gradient(90deg,#000 0 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 0 55%,transparent 100%)}
+.growth-art .growth-motion{z-index:3}
+.growth-stage{position:absolute;inset:0 0 0 46%;height:auto;min-height:0;border:0;background:none;overflow:visible;pointer-events:none}
+.growth-stage::after,.growth-hills{display:none}
+.growth-ball{top:65%;left:49%;width:clamp(54px,11.5vw,158px);background:radial-gradient(circle at 32% 25%,#fff9dc 2%,#f9e9ba 44%,#e1c99b 72%,#ad9c74 100%);box-shadow:inset -5px -9px 16px #7d6c4645,0 14px 30px #182e2470;transform-origin:center 88%;transition:transform 1.42s cubic-bezier(.28,.08,.55,1)}
+.growth-ball::after,.growth-demo[data-motion="running"] .growth-ball::after{display:none;animation:none}
+.growth-particle{top:61%;left:47%;width:clamp(9px,1.45vw,18px);background:#f7e3b0;box-shadow:0 0 10px #f7d89b7a;transition:transform .95s cubic-bezier(.24,.21,.74,1),opacity .95s ease}
+.growth-particle.is-added{transform:translate(10px,9px) scale(.3);opacity:0}
+.growth-controls{background:#faf6e8}
+@media(max-width:860px){.cycle-layout{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){
+ .cycle-ring{gap:2px}
+ .cycle-ring .cycle-step{font-size:.68rem}
+ .cycle-ring .cycle-step span{width:34px;height:34px}
+ .cycle-track{top:17px}
+ .growth-showcase{height:clamp(220px,62vw,310px)}
+ .growth-art{right:14%}
+ .growth-stage{left:47%}
+ .growth-ball{left:49%;width:clamp(44px,12vw,78px)}
+ .growth-particle{transform:translate(calc(var(--from-x)*.50),calc(var(--from-y)*.52))}
+}
+@media(prefers-reduced-motion:reduce){.growth-ball,.growth-particle{transition:none}}
 </style>
 </head>
 <body class="portal-shell portal-home"><a class="portal-skip" href="#main">Skip to content</a><header class="portal-header"><div class="portal-wrap portal-header-inner"><a class="portal-mark" href="index.html" aria-label="Home"><img src="assets/snowman-mark.png" width="48" height="48" alt=""></a><nav class="portal-nav" aria-label="Primary navigation"><a href="explore/index.html">Explore</a><a href="network/index.html">Holder Network</a><a href="leaderboard/index.html">Leaderboard</a><a href="how-it-works/index.html">How it works</a></nav><a class="portal-button portal-button-dark portal-report-cta" href="snowman/index.html">Retention reports <span aria-hidden="true">&#8599;</span></a><button class="portal-menu" type="button" aria-label="Menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
@@ -189,10 +231,9 @@
         <p class="cycle-caveat">Recipients can sell, and future rounds depend on trading activity.</p>
       </div>
       <div class="cycle-diagram" data-motion="stopped">
-        <div class="cycle-toolbar"><button type="button" class="cycle-motion" hidden>Play flow</button></div>
+        <div class="cycle-toolbar"><strong>Distribution cycle</strong><button type="button" class="cycle-motion" hidden>Play flow</button></div>
         <div class="cycle-ring" role="group" aria-label="Select a step in the distribution cycle">
-          <div class="cycle-orbit" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><ellipse class="cycle-route" cx="50" cy="50" rx="47" ry="44"/><circle class="cycle-speck" cx="0" cy="0" r="1.6"/><circle class="cycle-speck" cx="0" cy="0" r="1.6"/><circle class="cycle-speck" cx="0" cy="0" r="1.6"/></svg></div>
-          <div class="cycle-core" aria-hidden="true"><span class="cycle-ball"></span><strong>The next round</strong></div>
+          <div class="cycle-track" aria-hidden="true"></div>
           <button class="cycle-step cycle-step-1" type="button" data-cycle-step="0" aria-pressed="true" aria-controls="cycle-description"><span>01</span> Trading</button>
           <button class="cycle-step cycle-step-2" type="button" data-cycle-step="1" aria-pressed="false" aria-controls="cycle-description"><span>02</span> Creator fees</button>
           <button class="cycle-step cycle-step-3" type="button" data-cycle-step="2" aria-pressed="false" aria-controls="cycle-description"><span>03</span> Buyback</button>
@@ -210,7 +251,7 @@
       <div class="growth-showcase">
         <div class="growth-art"><img src="assets/editorial/distribution.webp" data-animated-src="assets/editorial/snowball-drops.webp" alt="The original orange-scarf snowman sends snowballs down a slope" width="640" height="360" loading="lazy"><button type="button" class="growth-motion" hidden>Play demo</button></div>
         <div class="growth-stage" aria-hidden="true">
-        <div class="growth-hills"></div>
+        
         <span class="growth-particle" style="--from-x:-122px;--from-y:-56px"></span><span class="growth-particle" style="--from-x:108px;--from-y:-42px"></span><span class="growth-particle" style="--from-x:-98px;--from-y:70px"></span><span class="growth-particle" style="--from-x:120px;--from-y:52px"></span><span class="growth-particle" style="--from-x:0px;--from-y:-98px"></span>
         <div class="growth-ball"></div>
         </div>
@@ -320,7 +361,7 @@
   let count = 0;
   function renderGrowth() {
     particles.forEach((particle, index) => particle.classList.toggle('is-added', index < count));
-    ball.style.setProperty('--growth-scale', String(1 + .085 * count));
+    ball.style.setProperty('--growth-scale', String(1 + .16 * count));
     counter.textContent = count + ' / ' + particles.length + ' sample wallets added';
     add.disabled = count === particles.length;
     reset.disabled = count === 0;
@@ -362,7 +403,7 @@
       manualGrowth = false;
       sampleProgress = 0;
     }
-    timer = setInterval(() => {
+    const advance = () => {
       if (manualGrowth) return;
       if (sampleProgress === particles.length) {
         sampleProgress = 0;
@@ -372,7 +413,9 @@
         count = sampleProgress;
       }
       renderGrowth();
-    }, 1450);
+    };
+    if (count === 0) advance();
+    timer = setInterval(advance, 1500);
   }
   art.addEventListener('error', () => {
     if (growth.dataset.motion === 'running') setGrowth(false);
