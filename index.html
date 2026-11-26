@@ -173,15 +173,30 @@
  .growth-particle{transform:translate(calc(var(--from-x)*.50),calc(var(--from-y)*.52))}
 }
 @media(prefers-reduced-motion:reduce){.growth-ball,.growth-particle{transition:none}}
+
+.portal-hero-split .hero-product-label{display:inline-flex;align-items:center;gap:8px;margin:0 0 19px;border:1px solid #cfceb0;border-radius:999px;padding:7px 11px;background:#f0efdd;color:#33543d;font-size:.73rem;line-height:1.1;letter-spacing:.065em}
+.hero-product-label span{width:8px;height:8px;border-radius:50%;background:#b86a30;box-shadow:0 0 0 3px #dbb48154}
+.portal-hero-split h1#portal-title{max-width:12.7ch;font-size:clamp(2.8rem,4.48vw,5.25rem);line-height:1.05;letter-spacing:-.049em}
+#portal-title em{display:inline-block;margin-top:.08em;padding:.025em .15em .105em .13em;border-radius:.15em;background:#204735;color:#fff0cb;font-family:inherit;font-style:normal;white-space:nowrap;box-shadow:0 6px 0 #79966b52}
+.portal-hero-split .portal-hero-copy>p.hero-product-description{max-width:48ch;margin-top:23px;font-size:clamp(1rem,1.18vw,1.18rem);line-height:1.62}
+.hero-product-proof{display:flex;flex-wrap:wrap;gap:8px 16px;list-style:none;margin:15px 0 0;padding:0;color:#34583c;font-size:.81rem;font-weight:700}
+.hero-product-proof li{display:flex;align-items:center;gap:5px}
+.hero-product-proof span{color:#a7501d}
+@media(max-width:820px){.portal-hero-split h1#portal-title{font-size:clamp(2.45rem,8.8vw,4.35rem)}}
+@media(max-width:560px){.portal-hero-split .hero-product-label{margin-bottom:13px}.portal-hero-split .portal-hero-copy>p.hero-product-description{margin-top:17px}.hero-product-proof{gap:6px 11px}}
 </style>
 </head>
 <body class="portal-shell portal-home"><a class="portal-skip" href="#main">Skip to content</a><header class="portal-header"><div class="portal-wrap portal-header-inner"><a class="portal-mark" href="index.html" aria-label="Home"><img src="assets/snowman-mark.png" width="48" height="48" alt=""></a><nav class="portal-nav" aria-label="Primary navigation"><a href="explore/index.html">Explore</a><a href="network/index.html">Holder Network</a><a href="leaderboard/index.html">Leaderboard</a><a href="how-it-works/index.html">How it works</a></nav><a class="portal-button portal-button-dark portal-report-cta" href="snowman/index.html">Retention reports <span aria-hidden="true">&#8599;</span></a><button class="portal-menu" type="button" aria-label="Menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
 <main id="main" class="portal-wrap">
   <section class="portal-hero portal-hero-split" aria-labelledby="portal-title">
     <div class="portal-hero-copy">
-      <p class="portal-eyebrow">Airdrop analytics on Solana</p>
-      <h1 id="portal-title">After the airdrop,<br>who stays?</h1>
-      <p>Follow a distribution from creator fees to the wallets that receive it. See how many are still holding seven days later.</p>
+      <p class="portal-eyebrow hero-product-label"><span aria-hidden="true"></span> Holder growth on Solana</p>
+      <h1 id="portal-title">Turn creator fees into <em>new holders.</em></h1>
+      <p class="hero-product-description">Put creator fees to work. Use them to buy your token and distribute it to active Solana wallets that don’t already hold it. The seven-day report shows how many recipients still hold your token.</p>
+      <ul class="hero-product-proof" aria-label="What you can track">
+        <li><span aria-hidden="true">&#10003;</span> On-chain transfer records</li>
+        <li><span aria-hidden="true">&#10003;</span> 7-day token retention</li>
+      </ul>
       <div class="portal-actions hero-entry-actions">
         <a class="portal-button portal-button-dark" href="register/index.html">Start your snowball <span aria-hidden="true">↗</span></a>
         <a class="portal-button hero-outlined" href="launch/index.html">Launch a coin</a>
