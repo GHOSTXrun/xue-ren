@@ -198,3 +198,39 @@ img[src$="snowman-mark.png"]{border-radius:12%;object-fit:contain}
 .portal-faq a{color:var(--portal-ink);text-underline-offset:3px}
 @media(max-width:900px){.portal-workflow{grid-template-columns:repeat(2,minmax(0,1fr))}.portal-workflow li:nth-child(odd){border-left:0}.portal-workflow li:nth-child(n+3){border-top:1px solid var(--portal-line)}}
 @media(max-width:640px){.portal-report-feature,.portal-faq{grid-template-columns:1fr}.portal-report-feature dl div{padding-left:8px}.portal-coin-table{min-width:380px}.portal-coin-table img{width:29px;height:29px}.portal-coin-table th,.portal-coin-table td{padding-block:12px}}
+
+/* Background sampled from the supplied snowman logo */
+.portal-shell{
+  --logo-moss:#5b8155;
+  --logo-paper:#f8f3df;
+  background:var(--logo-moss);
+}
+.portal-shell .portal-header{background:var(--logo-paper)}
+.portal-shell .portal-footer{background:var(--logo-paper)}
+.portal-home .portal-hero-split .portal-hero-copy,
+.portal-home > main > .history-heading,
+.portal-home > main > .portal-section:not(.portal-report-feature),
+.portal-home > main > .portal-wallet,
+.portal-standalone > main,
+.portal-interior > main{
+  background:var(--logo-paper);
+  border-radius:16px;
+}
+.portal-home .portal-hero-split .portal-hero-copy{padding:clamp(20px,3vw,38px)}
+.portal-home > main > .portal-section:not(.portal-report-feature),
+.portal-home > main > .history-heading,
+.portal-home > main > .portal-wallet{
+  padding:clamp(17px,3.3vw,42px);
+}
+.portal-shell.portal-home > main .portal-section{margin-top:clamp(18px,3vw,36px)}
+.portal-home .portal-section-head{border-color:#d2d5bb}
+.portal-standalone > main,
+.portal-interior > main{
+  width:min(1440px,calc(100% - 48px));
+  margin:24px auto 0;
+  padding:clamp(15px,3vw,38px);
+}
+.portal-standalone > main.shell{width:min(1120px,calc(100% - 48px));padding:clamp(17px,3.3vw,42px)}
+@media(max-width:640px){
+  .portal-standalone > main,.portal-interior > main,.portal-standalone > main.shell{width:calc(100% - 30px);margin-top:14px;padding:14px}
+}
