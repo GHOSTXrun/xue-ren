@@ -92,6 +92,38 @@
 @media(max-width:760px){.cycle-layout{grid-template-columns:minmax(0,1fr)}.growth-controls{align-items:start;flex-direction:column}}
 @media(max-width:420px){.cycle-briefs{grid-template-columns:1fr}.cycle-briefs span{display:inline;margin-left:5px}}
 @media(prefers-reduced-motion:reduce){.growth-ball,.growth-particle{transition:none}}
+
+/* Motion and illustrated growth */
+.cycle-diagram{--cycle-paper:#fff5d5;background:radial-gradient(ellipse at 50% 44%,#315746 6%,#193b30 59%,#14342a 100%);border-color:#355946;color:var(--cycle-paper);box-shadow:0 13px 30px #17382f24;padding:12px 12px 14px}
+.cycle-toolbar{display:flex;align-items:center;justify-content:flex-end;padding:0 0 2px}
+.cycle-motion,.growth-motion{background:#f9eed1;color:#214237;border:1px solid #d7c89d;border-radius:99px;padding:6px 9px;cursor:pointer;font:700 .72rem/1.2 system-ui,sans-serif}
+.cycle-motion:hover,.growth-motion:hover{background:#fff7df}
+.cycle-orbit{inset:11% 16%;border:0;background:none}
+.cycle-orbit svg{display:block;width:100%;height:100%;overflow:visible}
+.cycle-orbit .cycle-route{fill:none;stroke:#bfcea3;stroke-opacity:.5;stroke-width:1.5;stroke-dasharray:3 5}
+.cycle-orbit .cycle-speck{fill:#ffda94;filter:drop-shadow(0 0 3px #ffcc6f);offset-path:ellipse(47% 44% at 50% 50%);offset-anchor:center;animation:cycle-orbital 6s linear infinite;animation-play-state:paused}
+.cycle-orbit .cycle-speck:nth-of-type(2){animation-delay:-2s}
+.cycle-orbit .cycle-speck:nth-of-type(3){animation-delay:-4s}
+.cycle-diagram[data-motion="running"] .cycle-speck{animation-play-state:running}
+.cycle-step{box-shadow:0 4px 13px #0f2a214d}
+.cycle-step[aria-pressed="true"]{background:#ffdfa1;color:#17382f;border-color:#ffe6b5}
+.cycle-step[aria-pressed="true"] span{color:#604821}
+.cycle-core{color:#f8edc3;letter-spacing:.02em}
+.cycle-ball{width:clamp(53px,8vw,83px);background:radial-gradient(circle at 30% 26%,#fff9de 8%,#e8d6a3 57%,#899475 100%);box-shadow:inset -5px -8px 12px #63735365,0 0 28px #eaca8852}
+.cycle-description{color:#e5ebd2}
+@keyframes cycle-orbital{to{offset-distance:100%}}
+.growth-showcase{display:grid;grid-template-columns:1.2fr 1fr;background:#173a2e}
+.growth-art{position:relative;min-width:0;min-height:230px;overflow:hidden;background:#183e31}
+.growth-art>img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 57%}
+.growth-motion{position:absolute;bottom:11px;left:11px}
+.growth-stage{height:auto;min-height:clamp(230px,29vw,350px);background:radial-gradient(ellipse at 50% 28%,#f4ebce 1%,#dce0b9 58%,#a5b68d 100%);border-left:1px solid #234b3b70}
+.growth-stage::after{position:absolute;content:"";inset:12% 9%;z-index:-1;border:1px solid #faf0d39c;border-radius:50%;transform:rotate(-13deg);pointer-events:none}
+.growth-ball{width:clamp(68px,11vw,136px);background:radial-gradient(circle at 30% 25%,#fffdf1 0%,#f8e7b6 55%,#b1a57c 83%,#758369 100%);box-shadow:inset -8px -10px 17px #7a795350,0 14px 23px #25483440;overflow:hidden}
+.growth-ball::after{content:"";position:absolute;inset:0;border-radius:50%;opacity:.28;background:radial-gradient(circle,#7d6b46 10%,transparent 30%) 0 0/10px 12px}
+.growth-particle{width:19px;background:radial-gradient(circle at 27% 30%,#fff9dc,#ad9a70);box-shadow:0 4px 8px #25483445}
+.growth-demo[data-motion="running"] .growth-ball::after{animation:growth-roll 5s linear infinite}
+@keyframes growth-roll{to{transform:rotate(360deg)}}
+@media(max-width:660px){.growth-showcase{grid-template-columns:minmax(0,1fr)}.growth-art{min-height:0;aspect-ratio:16/9}.growth-stage{min-height:210px;border-left:0;border-top:1px solid #234b3b70}}
 </style>
 </head>
 <body class="portal-shell portal-home"><a class="portal-skip" href="#main">Skip to content</a><header class="portal-header"><div class="portal-wrap portal-header-inner"><a class="portal-mark" href="index.html" aria-label="Home"><img src="assets/snowman-mark.png" width="48" height="48" alt=""></a><nav class="portal-nav" aria-label="Primary navigation"><a href="explore/index.html">Explore</a><a href="network/index.html">Holder Network</a><a href="leaderboard/index.html">Leaderboard</a><a href="how-it-works/index.html">How it works</a></nav><a class="portal-button portal-button-dark portal-report-cta" href="snowman/index.html">Retention reports <span aria-hidden="true">&#8599;</span></a><button class="portal-menu" type="button" aria-label="Menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
@@ -149,9 +181,10 @@
         <div class="cycle-briefs"><div><strong>A small start</strong><span>The first batch of fees funds the first round.</span></div><div><strong>New wallets</strong><span>Distributions aim to reach wallets that haven’t held the token.</span></div><div><strong>Another round</strong><span>More trading can provide more fees for future rounds.</span></div></div>
         <p class="cycle-caveat">Recipients can sell, and future rounds depend on trading activity.</p>
       </div>
-      <div class="cycle-diagram">
+      <div class="cycle-diagram" data-motion="stopped">
+        <div class="cycle-toolbar"><button type="button" class="cycle-motion" hidden>Play flow</button></div>
         <div class="cycle-ring" role="group" aria-label="Select a step in the distribution cycle">
-          <div class="cycle-orbit" aria-hidden="true"></div>
+          <div class="cycle-orbit" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><ellipse class="cycle-route" cx="50" cy="50" rx="47" ry="44"/><circle class="cycle-speck" cx="0" cy="0" r="1.6"/><circle class="cycle-speck" cx="0" cy="0" r="1.6"/><circle class="cycle-speck" cx="0" cy="0" r="1.6"/></svg></div>
           <div class="cycle-core" aria-hidden="true"><span class="cycle-ball"></span><strong>The next round</strong></div>
           <button class="cycle-step cycle-step-1" type="button" data-cycle-step="0" aria-pressed="true" aria-controls="cycle-description"><span>01</span> Trading</button>
           <button class="cycle-step cycle-step-2" type="button" data-cycle-step="1" aria-pressed="false" aria-controls="cycle-description"><span>02</span> Creator fees</button>
@@ -166,11 +199,14 @@
 
   <section class="portal-section" aria-labelledby="growth-title">
     <div class="portal-section-head"><h2 id="growth-title">Every new holder adds to the ball</h2></div>
-    <div class="growth-demo">
-      <div class="growth-stage" aria-hidden="true">
+    <div class="growth-demo" data-motion="stopped">
+      <div class="growth-showcase">
+        <div class="growth-art"><img src="assets/editorial/distribution.webp" data-animated-src="assets/editorial/snowball-drops.webp" alt="The original orange-scarf snowman sends snowballs down a slope" width="640" height="360" loading="lazy"><button type="button" class="growth-motion" hidden>Play demo</button></div>
+        <div class="growth-stage" aria-hidden="true">
         <div class="growth-hills"></div>
         <span class="growth-particle" style="--from-x:-122px;--from-y:-56px"></span><span class="growth-particle" style="--from-x:108px;--from-y:-42px"></span><span class="growth-particle" style="--from-x:-98px;--from-y:70px"></span><span class="growth-particle" style="--from-x:120px;--from-y:52px"></span><span class="growth-particle" style="--from-x:0px;--from-y:-98px"></span>
         <div class="growth-ball"></div>
+        </div>
       </div>
       <div class="growth-controls">
         <div><strong id="growth-count" role="status">0 / 5 sample wallets added</strong><p>Illustration only. No live wallet data.</p></div>
@@ -292,6 +328,81 @@
     renderGrowth();
     add.focus();
   });
+
+  const cycle = document.querySelector('.cycle-diagram');
+  const growth = document.querySelector('.growth-demo');
+  const cycleToggle = cycle.querySelector('.cycle-motion');
+  const growthToggle = growth.querySelector('.growth-motion');
+  const art = growth.querySelector('.growth-art img');
+  const still = art.getAttribute('src');
+  const reducesMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let timer;
+  let manualGrowth = false;
+  let sampleProgress = 0;
+
+  function setCycle(active) {
+    cycle.dataset.motion = active ? 'running' : 'stopped';
+    cycleToggle.textContent = active ? 'Pause flow' : 'Play flow';
+  }
+  function setGrowth(active) {
+    growth.dataset.motion = active ? 'running' : 'stopped';
+    counter.setAttribute('aria-live', active ? 'off' : 'polite');
+    growthToggle.textContent = active ? 'Pause demo' : 'Play demo';
+    art.src = active ? art.dataset.animatedSrc : still;
+    clearInterval(timer);
+    if (!active) return;
+    if (manualGrowth) {
+      manualGrowth = false;
+      sampleProgress = 0;
+    }
+    timer = setInterval(() => {
+      if (manualGrowth) return;
+      if (sampleProgress === particles.length) {
+        sampleProgress = 0;
+        count = 0;
+      } else {
+        sampleProgress++;
+        count = sampleProgress;
+      }
+      renderGrowth();
+    }, 1450);
+  }
+  art.addEventListener('error', () => {
+    if (growth.dataset.motion === 'running') setGrowth(false);
+  });
+  function useManualGrowth() {
+    manualGrowth = true;
+    counter.setAttribute('aria-live', 'polite');
+  }
+  add.addEventListener('click', useManualGrowth);
+  reset.addEventListener('click', useManualGrowth);
+
+  function bindMotion(container, button, setMotion) {
+    let preference = null;
+    let inView = false;
+    button.hidden = false;
+    const refresh = () => {
+      const active = inView && (preference ?? !reducesMotion.matches);
+      if ((container.dataset.motion === 'running') !== active) setMotion(active);
+    };
+    button.addEventListener('click', () => {
+      preference = container.dataset.motion !== 'running';
+      refresh();
+    });
+    reducesMotion.addEventListener('change', refresh);
+    if (typeof IntersectionObserver === 'undefined') {
+      inView = true;
+      refresh();
+      return;
+    }
+    const observer = new IntersectionObserver(entries => {
+      inView = entries[0].isIntersecting;
+      refresh();
+    }, { threshold: .12 });
+    observer.observe(container);
+  }
+  bindMotion(cycle, cycleToggle, setCycle);
+  bindMotion(growth, growthToggle, setGrowth);
 })();
 </script>
 </body>
