@@ -317,26 +317,3 @@ if (!route) {
     walletInput.addEventListener('keydown', event => { if (event.key === 'Enter') lookupWallet(event); });
   }
 }
-
-const pushScene = document.querySelector('.push-scene');
-if (pushScene) {
-  const button = pushScene.querySelector('.push-toggle');
-  const icon = button.querySelector('[data-motion-icon]');
-  const label = button.querySelector('[data-motion-label]');
-  const preference = matchMedia('(prefers-reduced-motion: reduce)');
-  let manualChoice = false;
-  function setMotion(playing) {
-    pushScene.dataset.playing = String(playing);
-    icon.textContent = playing ? '\u275A\u275A' : '\u25B6';
-    label.textContent = playing ? 'Pause animation' : 'Play animation';
-  }
-  setMotion(!preference.matches);
-  button.hidden = false;
-  button.addEventListener('click', () => {
-    manualChoice = true;
-    setMotion(pushScene.dataset.playing !== 'true');
-  });
-  preference.addEventListener('change', event => {
-    if (!manualChoice) setMotion(!event.matches);
-  });
-}
