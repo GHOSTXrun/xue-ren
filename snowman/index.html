@@ -37,21 +37,11 @@ input { min-width: 0; flex: 1; padding: 12px; border: 1px solid #899d66; border-
 .card { overflow: hidden; border-radius: 24px; border: 1px solid #c7cba0; background: #fbfdff; box-shadow: 0 20px 50px #23403115; }
 .card-head { display: flex; justify-content: space-between; gap: 12px; padding: 20px 22px 0; align-items: center; }
 .badge { border-radius: 99px; background: #e9e2bf; color: #294635; padding: 5px 10px; font-size: .78rem; font-weight: 700; white-space: nowrap; }
-.scene { display: grid; place-items: center; min-height: 245px; position: relative; overflow: hidden; isolation: isolate; background: radial-gradient(ellipse at 50% 56%, #fff 4%, #ece5c3 62%, #f7fbff 93%); }
-.scene::before { content: ""; position: absolute; inset: 68% -20% -45% 4%; border-radius: 50%; background: #f8fcff; transform: rotate(-7deg); z-index: -1; }
-.flake { position: absolute; color: #4f6e48; font-size: 1.4rem; }
+.scene { display:grid;place-items:center;min-height:245px;position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 52% 23%,#74986b,#5b8155 63%,#476b4b); }
+.scene::before { content:"";position:absolute;inset:78% -20% -48%;border-radius:50%;background:#527650;transform:rotate(-7deg);z-index:-1; }
+.flake { position:absolute;color:#f5e8bd;font-size:1.4rem;opacity:.72; }
 .flake:nth-child(1) { left: 15%; top: 30%; } .flake:nth-child(2) { right: 15%; top: 23%; } .flake:nth-child(3) { right: 23%; top: 68%; }
-.snowman { --size: 1; position: relative; width: 178px; height: 213px; transform: scale(var(--size)); transform-origin: 50% 89%; transition: transform .4s ease; }
-.ball { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle at 32% 25%, white 12%, #fcf4df 45%, #aab584 100%); border: 1px solid #bac193; }
-.base { bottom: 9px; width: 145px; height: 105px; box-shadow: 0 13px 20px #49674530; }
-.middle { bottom: 79px; width: 109px; height: 87px; }
-.head { bottom: 143px; width: 81px; height: 69px; }
-.eye, .coal { position: absolute; border-radius: 50%; background: #1f3d2f; height: 7px; width: 7px; }
-.eye { top: 25px; left: 25px; box-shadow: 23px 0 #1f3d2f; }
-.nose { position: absolute; left: 39px; top: 34px; width: 24px; height: 10px; background: #ec843a; clip-path: polygon(0 0,100% 65%,0 100%); }
-.scarf { position: absolute; width: 79px; height: 13px; bottom: 141px; left: 50px; border-radius: 8px; background: #35523c; transform: rotate(-5deg); }
-.scarf::after { content: ""; position: absolute; width: 14px; height: 44px; right: 7px; top: 3px; border-radius: 5px; background: #35523c; transform: rotate(-18deg); }
-.coal { bottom: 107px; left: 86px; box-shadow: 0 17px #1f3d2f; }
+.snowman { --size:1;position:relative;width:min(210px,72%);height:auto;aspect-ratio:1;object-fit:contain;border-radius:17%;transform:scale(var(--size));transform-origin:50% 69%;transition:transform .4s ease;box-shadow:0 8px 25px #1f422e55; }
 .readout { padding: 16px 22px 22px; }
 .count { font-size: 2.55rem; font-weight: 800; line-height: 1.2; letter-spacing: -.04em; }
 .count small { font-size: 1rem; color: #38543d; letter-spacing: normal; }
@@ -79,7 +69,6 @@ footer { padding: 18px 0 28px; border-top: 1px solid #d5d6ad; font-size: .84rem;
 @media (prefers-reduced-motion: reduce) { .snowman { transition: none; } }
 h1, h2 { font-family: Georgia, "Noto Serif CJK SC", "SimSun", serif; }
 .brand img { border-radius: 12%; }
-.scarf, .scarf::after { background: #b5531c; }
 </style>
 <link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/site.js"></script></head>
 <body class="portal-shell portal-standalone"><a class="portal-skip" href="#main">Skip to content</a><header class="portal-header"><div class="portal-wrap portal-header-inner"><a class="portal-mark" href="../index.html" aria-label="Home"><img src="../assets/snowman-mark.png" width="48" height="48" alt=""></a><nav class="portal-nav" aria-label="Primary navigation"><a href="../explore/index.html">Explore</a><a href="../network/index.html">Holder Network</a><a href="../leaderboard/index.html">Leaderboard</a><a href="../how-it-works/index.html">How it works</a></nav><a class="portal-button portal-button-dark portal-report-cta" href="index.html">Retention reports <span aria-hidden="true">&#8599;</span></a><button class="portal-menu" type="button" aria-label="Menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header><main id="main" class="shell">
@@ -107,7 +96,7 @@ h1, h2 { font-family: Georgia, "Noto Serif CJK SC", "SimSun", serif; }
       <div class="card-head"><strong>雪球留存</strong><span class="badge">示例数据</span></div>
       <div class="scene" aria-hidden="true">
         <span class="flake">✧</span><span class="flake">❄</span><span class="flake">✧</span>
-        <div class="snowman" id="snowman"><div class="ball base"></div><div class="ball middle"></div><div class="ball head"><span class="eye"></span><span class="nose"></span></div><span class="scarf"></span><span class="coal"></span></div>
+        <img class="snowman" id="snowman" src="../assets/snowman-mark.png" width="220" height="220" alt=""><span class="scarf"></span><span class="coal"></span></div>
       </div>
       <div class="readout">
         <div aria-live="polite"><div class="count"><span id="count">37</span> <small>/ 100 钱包</small></div><div class="muted" id="day-label">第 7 天仍持有</div></div>
