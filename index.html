@@ -26,6 +26,33 @@
  .portal-hero-split .portal-hero-copy{padding:12px 0}
  .portal-hero-split h1{font-size:clamp(2.45rem,8.9vw,4.4rem)}
 }
+
+.hero-entry-actions{gap:9px;margin-top:23px}
+.hero-outlined{color:var(--portal-ink);background:#fcf9ed;border-color:#bcc8ae}
+.hero-outlined:hover{background:#eeeddc;border-color:#839b77}
+.hero-secondary{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:15px}
+.hero-secondary a{color:var(--portal-muted);font-size:.84rem;text-underline-offset:3px}
+.hero-copy-address{display:inline-flex;align-items:center;gap:6px;padding:5px 8px;border:1px solid #c3cdb5;border-radius:99px;color:var(--portal-ink);background:#ebedde;cursor:pointer;font:700 .73rem/1.1 system-ui,sans-serif}
+.hero-copy-address:hover{background:#dfe7d4}
+.hero-intro-panel{min-width:0;overflow:hidden;border:1px solid #c8cfb8;border-radius:clamp(12px,1.7vw,22px);background:#fcfbf1;box-shadow:0 15px 35px #18392c15}
+.hero-intro-panel .push-scene{border:0;border-radius:0;box-shadow:none}
+.hero-round{border-top:1px solid #c8cfb8}
+.portal-home .hero-round-title{margin:0;padding:12px 15px 10px;border-bottom:1px solid var(--portal-line);font-size:1.05rem;letter-spacing:-.01em;line-height:1.25}
+.hero-round-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:0;margin:0;list-style:none}
+.hero-round-steps li+li{border-left:1px solid var(--portal-line)}
+.hero-round-steps a{display:flex;flex-direction:column;height:100%;min-width:0;gap:5px;padding:11px clamp(8px,1.3vw,16px) 14px;color:var(--portal-ink);text-decoration:none}
+.hero-round-steps a:hover,.hero-round-steps a:focus-visible{background:#eef1e0}
+.hero-round-steps a:focus-visible{outline-offset:-3px}
+.hero-step-top{display:flex;justify-content:space-between;align-items:center;gap:3px;color:#476348;margin-bottom:2px}
+.hero-step-no{display:inline-flex;align-items:center;border-radius:99px;padding:4px 6px;background:#e6ecdb;color:#36563d;font:700 .67rem/1 system-ui,sans-serif}
+.hero-step-desc{color:var(--portal-muted);font-size:clamp(.74rem,.9vw,.87rem);line-height:1.4}
+@media(max-width:560px){
+ .hero-round-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .hero-round-steps li:nth-child(3){border-left:0}
+ .hero-round-steps li:nth-child(n+3){border-top:1px solid var(--portal-line)}
+ .hero-round-steps a{padding:10px 12px 12px}
+ .hero-entry-actions .portal-button{padding:9px 12px;font-size:.8rem}
+}
 </style>
 </head>
 <body class="portal-shell portal-home"><a class="portal-skip" href="#main">Skip to content</a><header class="portal-header"><div class="portal-wrap portal-header-inner"><a class="portal-mark" href="index.html" aria-label="Home"><img src="assets/snowman-mark.png" width="48" height="48" alt=""></a><nav class="portal-nav" aria-label="Primary navigation"><a href="explore/index.html">Explore</a><a href="network/index.html">Holder Network</a><a href="leaderboard/index.html">Leaderboard</a><a href="how-it-works/index.html">How it works</a></nav><a class="portal-button portal-button-dark portal-report-cta" href="snowman/index.html">Retention reports <span aria-hidden="true">&#8599;</span></a><button class="portal-menu" type="button" aria-label="Menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
@@ -35,15 +62,32 @@
       <p class="portal-eyebrow">Airdrop analytics on Solana</p>
       <h1 id="portal-title">After the airdrop,<br>who stays?</h1>
       <p>Follow a distribution from creator fees to the wallets that receive it. See how many are still holding seven days later.</p>
-      <div class="portal-actions">
-        <a class="portal-button portal-button-dark" href="snowman/index.html?report=demo">View retention report <span aria-hidden="true">↗</span></a>
-        <a class="portal-hero-link" href="explore/index.html">Explore coins <span aria-hidden="true">→</span></a>
+      <div class="portal-actions hero-entry-actions">
+        <a class="portal-button portal-button-dark" href="register/index.html">Start your snowball <span aria-hidden="true">↗</span></a>
+        <a class="portal-button hero-outlined" href="launch/index.html">Launch a coin</a>
+        <a class="portal-button hero-outlined" href="how-it-works/index.html">How it works <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-secondary" aria-label="More ways to explore">
+        <a href="snowman/index.html?report=demo">Example retention report</a>
+        <a href="explore/index.html">Explore coins</a>
+        <button class="hero-copy-address" type="button" title="9TKbd3VFaMSXsEAicD9JVQWpWwAoLi4fSgWmZL2cpump" aria-label="Copy archived example token contract address">CA: 9TKb…pump <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></button>
       </div>
     </div>
+    <div class="hero-intro-panel">
     <figure class="push-scene">
       <img class="push-artwork" data-still src="assets/editorial/hero.webp" data-animation="assets/editorial/rolling-uphill.webp" width="960" height="400" fetchpriority="high" alt="The original orange-scarf snowman pushes a snowball uphill">
       <button class="push-toggle" type="button" hidden>Play animation</button>
     </figure>
+    <div class="hero-round">
+    <h2 class="hero-round-title">How a round works</h2>
+    <ol class="hero-round-steps">
+      <li><a href="register/index.html"><span class="hero-step-top"><span class="hero-step-no">01</span><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 3h6v4H9zM8 12h8m-8 4h6"/></svg></span><strong>Register</strong><span class="hero-step-desc">Enter your pump.fun mint address to register your coin.</span></a></li>
+      <li><a href="how-it-works/index.html#main"><span class="hero-step-top"><span class="hero-step-no">02</span><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V6a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6m18 6h-5a2 2 0 0 0 0 4h5"/></svg></span><strong>Fund</strong><span class="hero-step-desc">Creator fees go into the distribution wallet.</span></a></li>
+      <li><a href="how-it-works/index.html#main"><span class="hero-step-top"><span class="hero-step-no">03</span><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 8h-3.7a2 2 0 0 0 0 4h1.4a2 2 0 0 1 0 4H9m3-10v12"/></svg></span><strong>Roll</strong><span class="hero-step-desc">The fees buy the same token for that round.</span></a></li>
+      <li><a href="network/index.html"><span class="hero-step-top"><span class="hero-step-no">04</span><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9 5l3 3 3-3m-6 14 3-3 3 3M5 11l4-1-1-4m11 7-4 1 1 4M8 18l1-4-4-1m11-7-1 4 4 1"/></svg></span><strong>Distribute</strong><span class="hero-step-desc">Each eligible new wallet receives one drop per token.</span></a></li>
+    </ol>
+  </div>
+    </div>
   </section>
 
   <section class="portal-archive" aria-labelledby="archive-title">
@@ -73,12 +117,6 @@
     </div>
   </section>
 
-
-  <section class="portal-section" aria-labelledby="workflow-title">
-    <div class="portal-section-head"><h2 id="workflow-title">From fees to holders</h2><a class="portal-text-link" href="how-it-works/index.html">Explore the mechanism <span aria-hidden="true">→</span></a></div>
-    <ol class="portal-workflow"><li><span class="portal-step-number" aria-hidden="true">01</span><h3>Register a coin</h3><p>The creator adds the token’s mint address and sets up a wallet for its distribution fees.</p></li><li><span class="portal-step-number" aria-hidden="true">02</span><h3>Fund the round</h3><p>Creator fees go into the distribution wallet and provide the budget for the round.</p></li><li><span class="portal-step-number" aria-hidden="true">03</span><h3>Buy and distribute</h3><p>The budget buys the token, which is sent to eligible wallets that don’t already hold it.</p></li><li><span class="portal-step-number" aria-hidden="true">04</span><h3>Measure retention</h3><p>Compare who received the token with who still holds it at the day-seven checkpoint.</p></li></ol>
-    <details class="portal-motion"><summary>Watch the snowball roll</summary><img src="assets/editorial/rolling-uphill.webp" alt="An animated snowman pushing a snowball uphill" loading="lazy"></details>
-  </section>
 
   <section class="portal-section" aria-labelledby="coins-title">
     <div class="portal-section-head"><div><h2 id="coins-title">Explore the coin archive</h2><p class="portal-section-note">Historical distribution figures</p></div><a class="portal-text-link" href="explore/index.html">All coins <span aria-hidden="true">→</span></a></div>
