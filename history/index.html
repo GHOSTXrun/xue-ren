@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Historical distribution data</title><link rel="icon" href="../assets/snowman-mark.png"><link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/site.js?v=history"></script>
+<style>
+.history-heading{padding-top:clamp(36px,6vw,78px);padding-bottom:16px}.history-heading h1{font-size:clamp(2.5rem,5.2vw,4.6rem);line-height:1.05}.history-heading p{max-width:64ch;color:var(--portal-muted);line-height:1.6}.history-links{display:flex;flex-wrap:wrap;gap:9px}.history-links a{color:var(--portal-ink);border-color:#c3ccb4;background:#fcfbf1}.history-links a:hover{background:#e8eddc}.portal-archive{grid-template-columns:minmax(110px,.7fr) 3.35fr auto}.portal-archive dl{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:960px){.portal-archive{grid-template-columns:1fr auto}}
+@media(max-width:560px){.portal-archive dl{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.portal-archive dl div:nth-child(3){border-left:0;padding-left:0}.portal-coin-table{min-width:380px}}
+</style></head><body class="portal-shell portal-home">
+<a class="portal-skip" href="#main">Skip to content</a><header class="portal-header"><div class="portal-wrap portal-header-inner"><a class="portal-mark" href="../index.html" aria-label="Home"><img src="../assets/snowman-mark.png" width="48" height="48" alt=""></a><nav class="portal-nav" aria-label="Primary navigation"><a href="../how-it-works/index.html">How it works</a><a href="index.html" aria-current="page">Historical data</a></nav><a class="portal-button portal-button-dark portal-report-cta" href="../snowman/index.html">Retention reports <span aria-hidden="true">&#8599;</span></a><button class="portal-menu" type="button" aria-label="Menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
+<main id="main" class="portal-wrap">
+<div class="history-heading"><h1>Historical distribution data</h1><p>These figures come from the original site archive. They describe past distributions and wallet activity.</p>
+<div class="history-links"><a class="portal-button" href="../explore/index.html">Explore all archived coins</a><a class="portal-button" href="../network/index.html">Holder network</a><a class="portal-button" href="../leaderboard/index.html">Archived leaderboard</a></div></div>
+<section class="portal-archive" aria-labelledby="archive-title">
+    <div><h2 id="archive-title">Network snapshot</h2><p>Archived data</p></div>
+    <dl>
+      <div><dt>Wallets reached</dt><dd>46,046</dd></div>
+      <div><dt>Coins registered</dt><dd>20</dd></div>
+      <div><dt>Tokens distributed</dt><dd>2.92M</dd></div>
+      <div><dt>Distribution value</dt><dd>$47.40</dd></div>
+    </dl>
+    <a class="portal-text-link" href="../network/index.html">Holder network <span aria-hidden="true">→</span></a>
+  </section>
+<section class="portal-section" aria-labelledby="coins-title">
+    <div class="portal-section-head"><div><h2 id="coins-title">Explore the coin archive</h2><p class="portal-section-note">Historical distribution figures</p></div><a class="portal-text-link" href="../explore/index.html">All coins <span aria-hidden="true">→</span></a></div>
+    <div class="portal-table-wrap" role="region" aria-label="Archived coins and distribution figures" tabindex="0"><table class="portal-coin-table"><thead><tr><th scope="col">Coin</th><th scope="col">Wallets reached</th><th scope="col">Retained</th><th scope="col">Archive retention</th></tr></thead><tbody><tr><th scope="row"><a href="../coin/9TKbd3VFaMSXsEAicD9JVQWpWwAoLi4fSgWmZL2cpump/index.html"><img src="../assets/external/bf3030e669ce0a7aaa92.png" alt="" width="38" height="38" loading="lazy"><span>Snowball<small>$Snowball</small></span></a></th><td>45,991</td><td>39,469</td><td><span class="portal-rate">86%</span></td></tr><tr><th scope="row"><a href="../coin/CtnZ7E5UNxVsziX3Qdf1XWqb2VwTk9S5r3kfcpNoNoCy/index.html"><img src="../assets/external/d82643e9585a630c3cda.webp" alt="" width="38" height="38" loading="lazy"><span>Snowball Cat<small>$SCAT</small></span></a></th><td>967</td><td>731</td><td><span class="portal-rate">76%</span></td></tr><tr><th scope="row"><a href="../coin/6QFnBdd2JspSjSKDDuCg94RxMuCafGGANRSpcZxWLVJK/index.html"><img src="../assets/external/be31e25ae918499fbbb8.jpg" alt="" width="38" height="38" loading="lazy"><span>Snowball Rats<small>$RATS</small></span></a></th><td>266</td><td>218</td><td><span class="portal-rate">82%</span></td></tr><tr><th scope="row"><a href="../coin/DsnW7SarCwzEts3vCskj2bGGBbBbth7qPkwGQeSjtuRP/index.html"><img src="../assets/external/98d3cd248cc4791674b8.jpg" alt="" width="38" height="38" loading="lazy"><span>Snowflake<small>$SNOWFLAKE</small></span></a></th><td>132</td><td>112</td><td><span class="portal-rate">85%</span></td></tr></tbody></table></div>
+  </section>
+<section class="portal-wallet" aria-labelledby="wallet-title">
+    <div><h2 id="wallet-title">Was your wallet reached?</h2><p>Look up an address in the archived holder network.</p></div>
+    <form>
+      <label class="portal-sr-only" for="portal-address">Solana wallet address</label>
+      <input id="portal-address" placeholder="Wallet address" autocomplete="off" spellcheck="false" required>
+      <button class="portal-button portal-button-dark" type="submit" disabled>Check archive</button>
+    </form>
+  </section>
+</main><footer class="portal-footer"><div class="portal-wrap portal-footer-inner"><a class="portal-mark" href="../index.html" aria-label="Home"><img src="../assets/snowman-mark.png" width="38" height="38" loading="lazy" alt=""></a><nav aria-label="Footer navigation"><a href="../launch/index.html">Launch draft</a><a href="../register/index.html">Coin lookup</a><a href="../opt-out/index.html">Opt out</a><a href="../status/index.html">Site status</a></nav><a href="https://x.com/holdersnowball">X <span aria-hidden="true">&#8599;</span></a></div></footer></body></html>

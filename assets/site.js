@@ -42,10 +42,9 @@ for (const button of document.querySelectorAll('button[title]')) {
 }
 
 const navItems = [
-  ['Home', 'index.html'], ['Launch', 'launch/index.html'], ['Explore', 'explore/index.html'],
-  ['Holder Network', 'network/index.html'], ['Leaderboard', 'leaderboard/index.html'],
-  ['How it works', 'how-it-works/index.html'], ['Register coin', 'register/index.html'],
-  ['Retention report', 'snowman/index.html']
+  ['Home', 'index.html'], ['How it works', 'how-it-works/index.html'],
+  ['Historical data', 'history/index.html'], ['Launch draft', 'launch/index.html'],
+  ['Retention reports', 'snowman/index.html']
 ];
 const menu = document.querySelector('button[aria-label="Menu"]');
 if (menu) {
@@ -81,7 +80,7 @@ if (health) {
 const firstHeading = document.querySelector('main h1, main h2');
 const notices = {
   register: 'Coin registration and fee-wallet creation require a connected service. You can still look up an existing coin below.',
-  launch: 'This preview cannot create tokens or submit transactions. You can open the original launch platform to continue.',
+  launch: 'This form saves a local project draft. Open pump.fun when you are ready to continue with the launch.',
   'opt-out': 'Wallet opt-out requires the distribution operator to confirm and record the preference. This snapshot cannot submit the request.',
   admin: 'Administration requires the project server and an authorized account.',
 };
@@ -276,7 +275,7 @@ function readNumber(text = "") {
   return Number(match[0].replace(/[KMB]/i, "")) * ({ K: 1e3, M: 1e6, B: 1e9 }[match[1]?.toUpperCase()] || 1);
 }
 
-if (!route) {
+if (route === "history") {
   const walletInput = document.querySelector('input[placeholder="Wallet address"]');
   const walletForm = walletInput?.closest('form') || walletInput?.parentElement;
   const walletButton = walletForm?.querySelector('button');
